@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #d2dec3;
+            background-color: #f4f6f8;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -15,10 +15,10 @@
             margin: 0;
         }
         .container {
-            background-color: #8b9e77; /* Fundo do formulário em verde claro */
+            background-color: #8b9e77; /* Fundo do formulário em verde mais escuro */
             padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
             width: 450px;
             max-width: 90%;
             text-align: center;
@@ -29,9 +29,10 @@
         .logo img {
             max-width: 180px;
             height: auto;
+            filter: brightness(0) invert(1);
         }
         h2 {
-            color: #4A5B3F;
+            color: #FFFFFF; /* Título em branco para contraste */
             text-align: center;
             margin-bottom: 25px;
             font-weight: 600;
@@ -44,7 +45,7 @@
         label {
             display: block;
             margin-bottom: 8px;
-            color: #4A5B3F;
+            color: #FFFFFF; /* Texto da label em branco */
             font-weight: 500;
             font-size: 1.05em;
         }
@@ -52,7 +53,7 @@
         select {
             width: 100%;
             padding: 12px;
-            border: 1px solid #7D9266;
+            border: 1px solid #B5C69F;
             border-radius: 6px;
             box-sizing: border-box;
             font-size: 1em;
@@ -61,9 +62,9 @@
         }
         input:focus,
         select:focus {
-            border-color: #B5C69F;
+            border-color: #4A5B3F;
             outline: none;
-            box-shadow: 0 0 5px rgba(181, 198, 159, 0.5);
+            box-shadow: 0 0 5px rgba(74, 91, 63, 0.5);
         }
         button {
             background-color: #B5C69F;
@@ -79,14 +80,14 @@
             letter-spacing: 0.5px;
         }
         button:hover {
-            background-color: #7D9266;
+            background-color: #4A5B3F;
             transform: translateY(-2px);
             color: white;
         }
         .message {
             text-align: center;
             margin-top: 20px;
-            color: #4A5B3F;
+            color: #FFFFFF; /* Mensagem em branco */
             font-size: 1em;
             font-weight: 500;
         }
@@ -102,7 +103,7 @@
 <body>
     <div class="container">
         <div class="logo">
-            <img src="https://testpage.iasolution.cloud/logovila.jpg" alt="Vila Pau Brasil Logo">
+            <img src="https://jiangelo77.github.io/midias/logovilapaubrasil.png" alt="Vila Pau Brasil Logo">
         </div>
         <h2>Formulário de Interesse</h2>
         <form id="event-form">
@@ -116,7 +117,7 @@
             </div>
             <div class="form-group">
                 <label for="whatsapp">WhatsApp: 🇧🇷</label>
-                <input type="tel" id="whatsapp" name="whatsapp" placeholder="Ex: 55119xxxxxxxxx" required>
+                <input type="tel" id="whatsapp" name="whatsapp" placeholder="Ex: 85992736922" required>
             </div>
             <div class="form-group">
                 <label for="tipo_evento">Tipo de Evento:</label>
@@ -140,12 +141,16 @@
 
         function formatWhatsAppNumber(number) {
             let cleanNumber = number.replace(/\D/g, '');
+            // Se o número não começar com 55 e tiver 8 ou mais dígitos, adiciona 55
             if (cleanNumber.length >= 8 && !cleanNumber.startsWith('55')) {
                 cleanNumber = '55' + cleanNumber;
             }
+            // Se o número tem 12 dígitos (55 + DDD + 8 dígitos), insere o 9
             if (cleanNumber.startsWith('55') && cleanNumber.length === 12) {
                 cleanNumber = cleanNumber.substring(0, 4) + '9' + cleanNumber.substring(4);
-            } else if (!cleanNumber.startsWith('55') && cleanNumber.length === 10) {
+            }
+            // Se o número tem 10 dígitos (DDD + 8 dígitos) e não começa com 55, adiciona 55 e o 9
+            else if (!cleanNumber.startsWith('55') && cleanNumber.length === 10) {
                  cleanNumber = '55' + cleanNumber.substring(0, 2) + '9' + cleanNumber.substring(2);
             }
             return cleanNumber;
