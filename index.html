@@ -164,7 +164,7 @@
             data.whatsapp = formatWhatsAppNumber(data.whatsapp);
 
             try {
-                const response = await fetch('https://n8n.iasolution.cloud/webhook-test/SDRTESTE', {
+                const response = await fetch('https://n8n.iasolution.cloud/webhook/leads_eventos', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
