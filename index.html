@@ -331,64 +331,93 @@
                     </div>
                 </div>
 
-                <!-- 5. CONFIGURAÇÕES -->
-                <div class="section">
-                    <h2 class="section-title"><i class="fas fa-cog"></i> 5. Configurações Avançadas</h2>
-                    <div class="grid-3">
-                        <div class="form-group">
-                            <label><i class="fas fa-video"></i> Tipo de reunião:</label>
-                            <select name="tipo_reuniao" class="select" required>
-                                <option value="">Selecione...</option>
-                                <option value="online">📱 Online (Zoom/Google Meet)</option>
-                                <option value="presencial">📍 Presencial</option>
-                                <option value="ambos">↔️ Ambos (flexível)</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label><i class="fas fa-clock"></i> Horários:</label>
-                            <input type="text" name="horarios" class="input" placeholder="Ex: Seg-Sex 9h-18h" required>
-                        </div>
-                        <div class="form-group">
-                            <label><i class="fas fa-phone"></i> WhatsApp:</label>
-                            <input type="tel" name="whatsapp_recebe" class="input" placeholder="(85) 99999-9999" required>
-                        </div>
-                    </div>
-                    <div class="grid-2">
-                        <div class="form-group">
-                            <label><i class="fas fa-bullseye"></i> Agendamentos/semana:</label>
-                            <input type="number" name="agendamentos_desejados" class="input" placeholder="Ex: 10" required>
-                        </div>
-                        <div class="form-group">
-                            <label><i class="fas fa-volume-up"></i> Tom de voz:</label>
-                            <select name="tom_voz" class="select" required>
-                                <option value="">Selecione...</option>
-                                <option>Formal/Profissional</option>
-                                <option>Descontraído/Amigável</option>
-                                <option>Consultivo/Especialista</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label><i class="fas fa-sticky-note"></i> Observações extras:</label>
-                        <textarea name="observacoes" class="textarea" placeholder="Qualquer detalhe importante..."></textarea>
-                    </div>
-                </div>
-
-                <button type="submit" class="submit-btn" id="submitBtn">
-                    <i class="fas fa-rocket"></i>
-                    Enviar Informações
-                </button>
-            </form>
-
-            <div class="loading" id="loading">
-                <div class="spinner"></div>
-                <p><strong>Enviando suas informações...</strong><br><small>Em breve entramos em contato!</small></p>
-            </div>
-
-            <div class="success" id="successMsg"></div>
-            <div class="error" id="errorMsg"></div>
+                <!-- 5. CONFIGURAÇÕES COMPLETAS -->
+<div class="section">
+    <h2 class="section-title"><i class="fas fa-cog"></i> 5. Configurações Completas</h2>
+    
+    <!-- Calendário -->
+    <div class="grid-3">
+        <div class="form-group">
+            <label><i class="fas fa-calendar"></i> Calendário:</label>
+            <select id="calendarioTipo" name="calendario_tipo" class="select" required>
+                <option value="">Selecione...</option>
+                <option value="google">Google Calendar</option>
+                <option value="outlook">Outlook</option>
+                <option value="apple">Apple Calendar</option>
+                <option value="outro">Outro</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label><i class="fas fa-envelope"></i> Email do calendário:</label>
+            <input type="email" id="calendarioEmail" name="calendario_email" class="input" placeholder="seuemail@gmail.com" required>
+        </div>
+        <div class="form-group">
+            <label><i class="fas fa-video"></i> Tipo de reunião:</label>
+            <select name="tipo_reuniao" class="select" required>
+                <option value="">Selecione...</option>
+                <option value="online">📱 Online</option>
+                <option value="presencial">📍 Presencial</option>
+                <option value="ambos">↔️ Ambos</option>
+            </select>
         </div>
     </div>
+
+    <!-- Horários e limites -->
+    <div class="grid-3">
+        <div class="form-group">
+            <label><i class="fas fa-clock"></i> Horários disponíveis:</label>
+            <input type="text" name="horarios" class="input" placeholder="Ex: Seg-Sex 8h-17h" required>
+        </div>
+        <div class="form-group">
+            <label><i class="fas fa-stopwatch"></i> Duração consulta:</label>
+            <select name="duracao" class="select" required>
+                <option value="">Selecione...</option>
+                <option value="30min">30 minutos</option>
+                <option value="45min">45 minutos</option>
+                <option value="60min">60 minutos</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label><i class="fas fa-calendar-day"></i> Máximo por dia:</label>
+            <input type="number" name="maximo_dia" class="input" placeholder="Ex: 8" required>
+        </div>
+    </div>
+
+    <!-- WhatsApp e objetivos -->
+    <div class="grid-2">
+        <div class="form-group">
+            <label><i class="fab fa-whatsapp"></i> WhatsApp:</label>
+            <input type="tel" name="whatsapp_recebe" class="input" placeholder="(85) 99999-9999" required>
+        </div>
+        <div class="form-group">
+            <label><i class="fas fa-bullseye"></i> Agendamentos desejados:</label>
+            <input type="number" name="agendamentos_desejados" class="input" placeholder="Ex: 10" required>
+        </div>
+    </div>
+
+    <!-- Tom e observações -->
+    <div class="grid-2">
+        <div class="form-group">
+            <label><i class="fas fa-volume-up"></i> Tom de voz:</label>
+            <select name="tom_voz" class="select" required>
+                <option value="">Selecione...</option>
+                <option value="formal">Formal/Profissional</option>
+                <option value="descontraido">Descontraído/Amigável</option>
+                <option value="consultivo">Consultivo/Especialista</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label><i class="fas fa-crown"></i> CRM usado:</label>
+            <input type="text" name="crm" class="input" placeholder="Ex: Pipedrive, Excel">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label><i class="fas fa-sticky-note"></i> Observações extras:</label>
+        <textarea name="observacoes" class="textarea" placeholder="Qualquer detalhe importante..."></textarea>
+    </div>
+</div>
+
 
     <!-- ✅ SCRIPT 100% CORRIGIDO -->
     <script>
@@ -429,6 +458,16 @@
                     try {
                         const formData = new FormData(this);
                         const dados = Object.fromEntries(formData);
+                        const nichoMap = {
+                            "imobiliario": "🏠 Imobiliário",
+                            "odontologia": "🦷 Odontologia", 
+                            "clinica": "🏥 Clínica Médica",
+                            "advocacia": "⚖️ Advocacia",
+                            "marketing": "📈 Marketing Digital",
+                            "treinamento": "📚 Cursos/Treinamentos",
+                            "outros": "🎯 Outros"
+                        };
+                        dados.nicho_texto = nichoMap[dados.nichoSelect] || dados.nichoSelect;
                         
                         dados.ip = 'GitHub Pages Premium';
                         dados.data_cadastro = new Date().toISOString();
