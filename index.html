@@ -3,200 +3,474 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vila Pau Brasil Eventos - Formulário de Interesse</title>
+    <title>🚀 Configuração Agente SDR Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f4f6f8;
+        * { 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        body { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+            min-height: 100vh; 
+            padding: 20px 0;
+        }
+        
+        .container { 
+            max-width: 900px; 
+            margin: 0 auto; 
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(20px);
+            border-radius: 24px; 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15); 
+            overflow: hidden;
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
             display: flex;
-            justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            margin: 0;
+            justify-content: center;
+            gap: 15px;
         }
-        .container {
-            background-color: #5a6b51; /* Fundo do formulário em verde mais escuro */
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-            width: 450px;
-            max-width: 90%;
-            text-align: center;
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
         }
-        .logo {
-            margin-bottom: 20px;
+        
+        .content {
+            padding: 50px 40px;
         }
-        .logo img {
-            max-width: 180px;
-            height: auto;
-            filter: brightness(0) invert(1);
+        
+        .section {
+            margin-bottom: 40px;
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
         }
-        h2 {
-            color: #FFFFFF; /* Título em branco para contraste */
-            text-align: center;
-            margin-bottom: 25px;
+        
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+        
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section-title {
+            color: #1f2937;
+            font-size: 1.5rem;
             font-weight: 600;
-            font-size: 1.8em;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-left: 5px;
+            border-left: 4px solid #4f46e5;
         }
+        
         .form-group {
             margin-bottom: 20px;
-            text-align: left;
         }
+        
         label {
             display: block;
-            margin-bottom: 8px;
-            color: #FFFFFF; /* Texto da label em branco */
             font-weight: 500;
-            font-size: 1.05em;
+            color: #374151;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
         }
-        input,
-        select {
+        
+        .input, .select, .textarea {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #B5C69F;
-            border-radius: 6px;
-            box-sizing: border-box;
-            font-size: 1em;
-            background-color: #fcfcfc;
-            color: #333;
+            padding: 16px 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 16px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: white;
+            font-family: inherit;
         }
-        input:focus,
-        select:focus {
-            border-color: #4A5B3F;
+        
+        .input:focus, .select:focus, .textarea:focus {
             outline: none;
-            box-shadow: 0 0 5px rgba(74, 91, 63, 0.5);
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+            transform: translateY(-2px);
         }
-        button {
-            background-color: #B5C69F;
-            color: #4A5B3F;
-            padding: 14px 25px;
+        
+        .textarea {
+            resize: vertical;
+            min-height: 100px;
+            font-family: inherit;
+        }
+        
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+        
+        @media (max-width: 768px) {
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .header h1 { font-size: 2rem; }
+            .content { padding: 30px 20px; }
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 20px 40px;
             border: none;
-            border-radius: 6px;
+            border-radius: 16px;
+            font-size: 1.3rem;
+            font-weight: 600;
             cursor: pointer;
             width: 100%;
-            font-size: 1.1em;
-            font-weight: 700;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
         }
-        button:hover {
-            background-color: #4A5B3F;
-            transform: translateY(-2px);
-            color: white;
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.3);
         }
-        .message {
+        
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .submit-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .loading {
+            display: none;
             text-align: center;
+            padding: 40px;
+        }
+        
+        .spinner {
+            border: 4px solid #e5e7eb;
+            border-top: 4px solid #10b981;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .success, .error {
+            padding: 20px;
+            border-radius: 16px;
             margin-top: 20px;
-            color: #FFFFFF; /* Mensagem em branco */
-            font-size: 1em;
+            display: none;
             font-weight: 500;
         }
-        @media (max-width: 600px) {
-            .container {
-                width: 95%;
-                padding: 20px;
-            }
+        
+        .success {
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+        
+        .error {
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+        
+        .premium-badge {
+            display: inline-flex;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-left: 10px;
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <div class="logo">
-            <img src="https://midias.iasolution.cloud/logovilapaubrasil.png" alt="Vila Pau Brasil Logo">
+        <div class="header">
+            <h1><i class="fas fa-robot"></i> Configuração Agente SDR <span class="premium-badge">Premium</span></h1>
+            <p>Preencha para criarmos uma proposta ideal para você</p>
         </div>
-        <h2>Formulário de Interesse</h2>
-        <form id="event-form">
-            <div class="form-group">
-                <label for="nome">Nome Completo:</label>
-                <input type="text" id="nome" name="nome" required>
+        
+        <div class="content">
+            <form id="sdrForm">
+                <!-- 1. NICHO -->
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-store"></i> 1. Seu Nicho</h2>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>Nicho/Empresa:</label>
+                            <select id="nichoSelect" name="nichoSelect" class="select" required>
+                                <option value="">Selecione seu nicho...</option>
+                                <option value="imobiliario">🏠 Imobiliário</option>
+                                <option value="odontologia">🦷 Odontologia</option>
+                                <option value="clinica">🏥 Clínica Médica</option>
+                                <option value="advocacia">⚖️ Advocacia</option>
+                                <option value="marketing">📈 Marketing Digital</option>
+                                <option value="treinamento">📚 Cursos/Treinamentos</option>
+                                <option value="outros">🎯 Outros</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Nome da empresa:</label>
+                            <input type="text" name="empresa" class="input" placeholder="Ex: Imóveis Fortaleza" required>
+                        </div>
+                    </div>
+                    <div id="nichoOutro" class="form-group" style="display:none;">
+                        <label>Descreva seu serviço:</label>
+                        <textarea name="nicho_outro" class="textarea" placeholder="Ex: Vendo apartamentos na praia"></textarea>
+                    </div>
+                </div>
+
+                <!-- 2. NEGÓCIO -->
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-chart-line"></i> 2. Seu Negócio</h2>
+                    <div class="form-group">
+                        <label>O que você vende/prestiga?</label>
+                        <textarea name="produto" class="textarea" placeholder="Ex: Visitas a imóveis, consultas dentárias" required></textarea>
+                    </div>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>Região principal:</label>
+                            <input type="text" name="regiao" class="input" placeholder="Ex: Fortaleza, online" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Cliente ideal:</label>
+                            <input type="text" name="cliente_ideal" class="input" placeholder="Ex: Famílias, empreendedores" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. LEADS -->
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-users"></i> 3. Seus Leads</h2>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>De onde vêm os leads?</label>
+                            <input type="text" name="leads_origem" class="input" placeholder="Ex: WhatsApp, Instagram, site" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Quantos leads por semana?</label>
+                            <input type="number" name="leads_qtd" class="input" placeholder="Ex: 20" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Onde os leads caem hoje?</label>
+                        <input type="text" name="leads_onde" class="input" placeholder="Ex: Meu WhatsApp, Excel, CRM" required>
+                    </div>
+                </div>
+
+                <!-- 4. ATENDIMENTO -->
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-headset"></i> 4. Atendimento Atual</h2>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>Quem responde hoje?</label>
+                            <input type="text" name="quem_responde" class="input" placeholder="Ex: Eu mesmo, assistente" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Tempo médio resposta:</label>
+                            <select name="tempo_resposta" class="select" required>
+                                <option value="">Selecione...</option>
+                                <option><1 hora</option>
+                                <option>1-3 horas</option>
+                                <option>3-24 horas</option>
+                                <option>>24 horas</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Quais perguntas você faz para qualificar?</label>
+                        <textarea name="perguntas_qualificacao" class="textarea" placeholder="Ex: 1. Quando quer? 2. Orçamento? 3. Localização?" required></textarea>
+                    </div>
+                </div>
+
+                <!-- 5. AGENDA + 6. CRM + 7. CANAIS + 8. OBJETIVOS (condensados para ficar mais limpo) -->
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-cog"></i> 5. Configurações Avançadas</h2>
+                    <div class="grid-3">
+                    <div class="form-group">
+                        <label><i class="fas fa-video"></i> Tipo de reunião:</label>
+                        <select name="tipo_reuniao" class="select" required>
+                            <option value="">Selecione...</option>
+                            <option value="online">📱 Online (Zoom/Google Meet)</option>
+                            <option value="presencial">📍 Presencial</option>
+                            <option value="ambos">↔️ Ambos (flexível)</option>
+                        </select>
+                    </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-clock"></i> Horários:</label>
+                            <input type="text" name="horarios" class="input" placeholder="Ex: Seg-Sex 9h-18h" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-phone"></i> WhatsApp:</label>
+                            <input type="tel" name="whatsapp_recebe" class="input" placeholder="(85) 99999-9999" required>
+                        </div>
+                    </div>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label><i class="fas fa-bullseye"></i> Agendamentos/semana:</label>
+                            <input type="number" name="agendamentos_desejados" class="input" placeholder="Ex: 10" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-volume-up"></i> Tom de voz:</label>
+                            <select name="tom_voz" class="select" required>
+                                <option value="">Selecione...</option>
+                                <option>Formal/Profissional</option>
+                                <option>Descontraído/Amigável</option>
+                                <option>Consultivo/Especialista</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-sticky-note"></i> Observações extras:</label>
+                        <textarea name="observacoes" class="textarea" placeholder="Qualquer detalhe importante..."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <i class="fas fa-rocket"></i>
+                    Enviar Formulário
+                </button>
+            </form>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p><strong>Configurando seu agente SDR...</strong><br><small>Isso leva apenas alguns segundos</small></p>
             </div>
-            <div class="form-group">
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="whatsapp">WhatsApp: 🇧🇷</label>
-                <input type="tel" id="whatsapp" name="whatsapp" placeholder="Ex: 119********" required>
-            </div>
-            <div class="form-group">
-                <label for="tipo_evento">Tipo de Evento:</label>
-                <select id="tipo_evento" name="tipo_evento" required>
-                    <option value="" disabled selected>Selecione o tipo de evento</option>
-                    <option value="casamento">Casamento</option>
-                    <option value="debutantes">Debutantes</option>
-                    <option value="bodas">Bodas</option>
-                    <option value="festas">Festas</option>
-                    <option value="corporativo">Corporativo</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="data_estimada">Data Estimada:</label>
-                <input type="text" id="data_estimada" name="data_estimada" placeholder="DD/MM/AAAA">
-            </div>
-            <div class="form-group">
-                <label for="hora_estimada">Hora Estimada:</label>
-                <input type="text" id="hora_estimada" name="hora_estimada" placeholder="Ex: 20:00">
-            </div>
-            <div class="form-group">
-                <label for="convidados_estimados">Número de Convidados:</label>
-                <select id="convidados_estimados" name="convidados_estimados">
-                    <option value="" disabled selected>Selecione a faixa de convidados</option>
-                    <option value="entre 50 e 70 convidados">entre 50 e 70 convidados</option>
-                    <option value="entre 70 e 100 convidados">entre 70 e 100 convidados</option>
-                    <option value="entre 100 e 150 convidados">entre 100 e 150 convidados</option>
-                    <option value="acima de 150 convidados">acima de 150 convidados</option>
-                </select>
-            </div>
-            <button type="submit">Enviar Formulário</button>
-            <p class="message" id="form-message">Em instantes entraremos em contato!</p>
-        </form>
+
+            <div class="success" id="successMsg"></div>
+            <div class="error" id="errorMsg"></div>
+        </div>
     </div>
 
     <script>
-        const form = document.getElementById('event-form');
-        const messageElement = document.getElementById('form-message');
+        // CONFIGS SUPABASE - COLE AQUI E MANTENHA OCULTO
+        const SUPABASE_CONFIG = {
+            url: 'https://bxzbabkngdveobfewuxp.supabase.co',  // ← COLE SUA URL AQUI
+            key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4emJhYmtuZ2R2ZW9iZmV3dXhwIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0OTMzOTA0NSwiZXhwIjoyMDY0OTE1MDQ1fQ.D3fmW-3TKhoB3MDO9Hdh45TFKNcYTiFVvItyKEjPOy8'           // ← COLE SUA CHAVE AQUI
+        };
 
-        function formatWhatsAppNumber(number) {
-            let cleanNumber = number.replace(/\D/g, '');
-            // Se o número não começar com 55 e tiver 8 ou mais dígitos, adiciona 55
-            if (cleanNumber.length >= 8 && !cleanNumber.startsWith('55')) {
-                cleanNumber = '55' + cleanNumber;
-            }
-            // Se o número tem 12 dígitos (55 + DDD + 8 dígitos), insere o 9
-            if (cleanNumber.startsWith('55') && cleanNumber.length === 12) {
-                cleanNumber = cleanNumber.substring(0, 4) + '9' + cleanNumber.substring(4);
-            }
-            // Se o número tem 10 dígitos (DDD + 8 dígitos) e não começa com 55, adiciona 55 e o 9
-            else if (!cleanNumber.startsWith('55') && cleanNumber.length === 10) {
-                 cleanNumber = '55' + cleanNumber.substring(0, 2) + '9' + cleanNumber.substring(2);
-            }
-            return cleanNumber;
-        }
+        // Animações dinâmicas
+        document.getElementById('nichoSelect').addEventListener('change', function() {
+            document.getElementById('nichoOutro').style.display = this.value === 'outros' ? 'block' : 'none';
+        });
 
-        form.addEventListener('submit', async (event) => {
-            event.preventDefault();
+        document.getElementById('calendarioTipo').addEventListener('change', function() {
+            const emailField = document.getElementById('calendarioEmail');
+            if (emailField) emailField.required = this.value !== 'outro';
+        });
 
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData.entries());
-            data.whatsapp = formatWhatsAppNumber(data.whatsapp);
+        // Submit form
+        document.getElementById('sdrForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Validação Supabase
+            if (!SUPABASE_CONFIG.url || SUPABASE_CONFIG.url === 'https://SEU_PROJETO.supabase.co' || 
+                !SUPABASE_CONFIG.key || SUPABASE_CONFIG.key === 'eyJ...sua_anon_key_aqui') {
+                alert('❌ Configuração Supabase não foi definida pelo administrador.');
+                return;
+            }
+
+            const btn = document.getElementById('submitBtn');
+            const loading = document.getElementById('loading');
+            const success = document.getElementById('successMsg');
+            const errorMsg = document.getElementById('errorMsg');
+            
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Configurando...';
+            loading.style.display = 'block';
+            success.style.display = 'none';
+            errorMsg.style.display = 'none';
 
             try {
-                const response = await fetch('https://n8n.iasolution.cloud/webhook-test/leads_eventos', {
+                const formData = new FormData(this);
+                const dados = Object.fromEntries(formData);
+                
+                dados.ip = 'GitHub Pages Premium';
+                dados.data_cadastro = new Date().toISOString();
+                dados.status = 'premium';
+
+                const response = await fetch(`${SUPABASE_CONFIG.url}/rest/v1/sdr_formularios?select=*`, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
+                    headers: {
+                        'apikey': SUPABASE_CONFIG.key,
+                        'Authorization': `Bearer ${SUPABASE_CONFIG.key}`,
+                        'Content-Type': 'application/json',
+                        'Prefer': 'return=minimal'
+                    },
+                    body: JSON.stringify([dados])
                 });
 
                 if (response.ok) {
-                    messageElement.textContent = 'Formulário enviado com sucesso! Entraremos em contato em seguida.';
-                    form.reset();
+                    success.innerHTML = `
+                        <i class="fas fa-check-circle" style="font-size: 2rem; margin-bottom: 10px; display: block;"></i>
+                        <strong>🎉 Agente SDR Premium ativado com sucesso!</strong><br>
+                        Seu assistente inteligente estará ativo em 24h.<br>
+                        <small>Você receberá confirmação no WhatsApp cadastrado</small>
+                    `;
+                    success.style.display = 'block';
+                    this.reset();
+                    document.getElementById('nichoOutro').style.display = 'none';
                 } else {
-                    messageElement.textContent = 'Erro ao enviar o formulário. Tente novamente.';
+                    const errorData = await response.text();
+                    throw new Error(`Erro no servidor: ${response.status}`);
                 }
             } catch (error) {
-                console.error('Erro na requisição:', error);
-                messageElement.textContent = 'Erro de conexão. Verifique sua rede.';
+                errorMsg.innerHTML = `
+                    <i class="fas fa-exclamation-triangle" style="font-size: 1.5rem; margin-bottom: 10px; display: block;"></i>
+                    Erro ao configurar agente SDR: ${error.message}
+                `;
+                errorMsg.style.display = 'block';
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-rocket"></i> Ativar Agente SDR Premium';
+                loading.style.display = 'none';
             }
         });
     </script>
