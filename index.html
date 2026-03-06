@@ -245,7 +245,7 @@
                     <div class="grid-2">
                         <div class="form-group">
                             <label>Nicho/Empresa:</label>
-                            <select id="nichoSelect" name="nichoSelect" class="select" required>
+                            <select name="nichoSelect" name="nichoSelect" class="select" required>
                                 <option value="">Selecione seu nicho...</option>
                                 <option value="imobiliario">🏠 Imobiliário</option>
                                 <option value="odontologia">🦷 Odontologia</option>
@@ -390,11 +390,14 @@
     </div>
 
     <script>
-        // CONFIGS SUPABASE - COLE AQUI E MANTENHA OCULTO
-        const SUPABASE_CONFIG = {
-            url: 'https://bxzbabkngdveobfewuxp.supabase.co',  // ← COLE SUA URL AQUI
-            key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4emJhYmtuZ2R2ZW9iZmV3dXhwIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0OTMzOTA0NSwiZXhwIjoyMDY0OTE1MDQ1fQ.D3fmW-3TKhoB3MDO9Hdh45TFKNcYTiFVvItyKEjPOy8'           // ← COLE SUA CHAVE AQUI
-        };
+    // CONFIGS SUPABASE - COLE AQUI E MANTENHA OCULTO
+    const SUPABASE_CONFIG = {
+        url: 'https://bxzbabkngdveobfewuxp.supabase.co',
+        key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4emJhYmtuZ2R2ZW9iZmV3dXhwIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0OTMzOTA0NSwiZXhwIjoyMDY0OTE1MDQ1fQ.D3fmW-3TKhoB3MDO9Hdh45TFKNcYTiFVvItyKEjPOy8'
+    };
+
+    // 🔥 CORREÇÃO: ESPERA HTML CARREGAR
+    document.addEventListener('DOMContentLoaded', function() {
 
         // Animações dinâmicas
         document.getElementById('nichoSelect').addEventListener('change', function() {
@@ -432,11 +435,17 @@
                 const formData = new FormData(this);
                 const dados = Object.fromEntries(formData);
                 
+                // 🔥 CORREÇÃO: Ajusta nome do campo para sua tabela
+                if (dados.nichoSelect) {
+                    dados.nichoselect = dados.nichoSelect;
+                    delete dados.nichoSelect;
+                }
+                
                 dados.ip = 'GitHub Pages Premium';
                 dados.data_cadastro = new Date().toISOString();
                 dados.status = 'premium';
 
-                const response = await fetch(`${SUPABASE_CONFIG.url}/rest/v1/sdr_formularios?select=*`, {
+                const response = await fetch(`${SUPABASE_CONFIG.url}/rest/v1/sdr_formularios`, {
                     method: 'POST',
                     headers: {
                         'apikey': SUPABASE_CONFIG.key,
@@ -450,16 +459,15 @@
                 if (response.ok) {
                     success.innerHTML = `
                         <i class="fas fa-check-circle" style="font-size: 2rem; margin-bottom: 10px; display: block;"></i>
-                        <strong>🎉 Agente SDR Premium ativado com sucesso!</strong><br>
-                        Seu assistente inteligente estará ativo em 24h.<br>
-                        <small>Você receberá confirmação no WhatsApp cadastrado</small>
+                        <strong>🎉 Enviado com sucesso!</strong><br>
+                        <small>Você receberá nosso contato no WhatsApp cadastrado</small>
                     `;
                     success.style.display = 'block';
                     this.reset();
                     document.getElementById('nichoOutro').style.display = 'none';
                 } else {
                     const errorData = await response.text();
-                    throw new Error(`Erro no servidor: ${response.status}`);
+                    throw new Error(`Erro no servidor: ${response.status} - ${errorData}`);
                 }
             } catch (error) {
                 errorMsg.innerHTML = `
@@ -473,6 +481,7 @@
                 loading.style.display = 'none';
             }
         });
-    </script>
+    });  // 🔥 FECHA A FUNÇÃO DOMContentLoaded
+</script>
 </body>
 </html>
