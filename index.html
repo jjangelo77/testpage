@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* SEU CSS INTACTO - mantive tudo igual */
         * { 
             font-family: 'Inter', sans-serif; 
             margin: 0; 
@@ -245,7 +244,6 @@
                     <div class="grid-2">
                         <div class="form-group">
                             <label>Nicho/Empresa:</label>
-                            <!-- ✅ CORRIGIDO: id="nichoSelect" -->
                             <select id="nichoSelect" name="nichoSelect" class="select" required>
                                 <option value="">Selecione seu nicho...</option>
                                 <option value="imobiliario">🏠 Imobiliário</option>
@@ -262,6 +260,7 @@
                             <input type="text" name="empresa" class="input" placeholder="Ex: Imóveis Fortaleza" required>
                         </div>
                     </div>
+                    <!-- Campo condicional: só aparece quando "Outros" é selecionado -->
                     <div id="nichoOutro" class="form-group" style="display:none;">
                         <label>Descreva seu serviço:</label>
                         <textarea name="nicho_outro" class="textarea" placeholder="Ex: Vendo apartamentos na praia"></textarea>
@@ -272,7 +271,7 @@
                 <div class="section">
                     <h2 class="section-title"><i class="fas fa-chart-line"></i> 2. Seu Negócio</h2>
                     <div class="form-group">
-                        <label>O que você vende/prestiga?</label>
+                        <label>O que você vende/presta?</label>
                         <textarea name="produto" class="textarea" placeholder="Ex: Visitas a imóveis, consultas dentárias" required></textarea>
                     </div>
                     <div class="grid-2">
@@ -318,10 +317,10 @@
                             <label>Tempo médio resposta:</label>
                             <select name="tempo_resposta" class="select" required>
                                 <option value="">Selecione...</option>
-                                <option><1 hora</option>
-                                <option>1-3 horas</option>
-                                <option>3-24 horas</option>
-                                <option>>24 horas</option>
+                                <option value="menos_1h">&lt;1 hora</option>
+                                <option value="1_3h">1-3 horas</option>
+                                <option value="3_24h">3-24 horas</option>
+                                <option value="mais_24h">&gt;24 horas</option>
                             </select>
                         </div>
                     </div>
@@ -332,111 +331,109 @@
                 </div>
 
                 <!-- 5. CONFIGURAÇÕES COMPLETAS -->
-<div class="section">
-    <h2 class="section-title"><i class="fas fa-cog"></i> 5. Configurações Completas</h2>
-    
-    <!-- Calendário -->
-    <div class="grid-3">
-        <div class="form-group">
-            <label><i class="fas fa-calendar"></i> Calendário:</label>
-            <select id="calendarioTipo" name="calendario_tipo" class="select" required>
-                <option value="">Selecione...</option>
-                <option value="google">Google Calendar</option>
-                <option value="outlook">Outlook</option>
-                <option value="apple">Apple Calendar</option>
-                <option value="outro">Outro</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label><i class="fas fa-envelope"></i> Email do calendário:</label>
-            <input type="email" id="calendarioEmail" name="calendario_email" class="input" placeholder="seuemail@gmail.com" required>
-        </div>
-        <div class="form-group">
-            <label><i class="fas fa-video"></i> Tipo de reunião:</label>
-            <select name="tipo_reuniao" class="select" required>
-                <option value="">Selecione...</option>
-                <option value="online">📱 Online</option>
-                <option value="presencial">📍 Presencial</option>
-                <option value="ambos">↔️ Ambos</option>
-            </select>
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-cog"></i> 5. Configurações Completas</h2>
+                    
+                    <!-- Calendário -->
+                    <div class="grid-3">
+                        <div class="form-group">
+                            <label><i class="fas fa-calendar"></i> Calendário:</label>
+                            <select name="calendario_tipo" class="select" required>
+                                <option value="">Selecione...</option>
+                                <option value="google">Google Calendar</option>
+                                <option value="outlook">Outlook</option>
+                                <option value="apple">Apple Calendar</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-envelope"></i> Email do calendário:</label>
+                            <input type="email" name="calendario_email" class="input" placeholder="seuemail@gmail.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-video"></i> Tipo de reunião:</label>
+                            <select name="tipo_reuniao" class="select" required>
+                                <option value="">Selecione...</option>
+                                <option value="online">📱 Online</option>
+                                <option value="presencial">📍 Presencial</option>
+                                <option value="ambos">↔️ Ambos</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Horários e limites -->
+                    <div class="grid-3">
+                        <div class="form-group">
+                            <label><i class="fas fa-clock"></i> Horários disponíveis:</label>
+                            <input type="text" name="horarios" class="input" placeholder="Ex: Seg-Sex 8h-17h" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-stopwatch"></i> Duração consulta:</label>
+                            <select name="duracao" class="select" required>
+                                <option value="">Selecione...</option>
+                                <option value="30min">30 minutos</option>
+                                <option value="45min">45 minutos</option>
+                                <option value="60min">60 minutos</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-calendar-day"></i> Máximo por dia:</label>
+                            <input type="number" name="maximo_dia" class="input" placeholder="Ex: 8" required>
+                        </div>
+                    </div>
+
+                    <!-- WhatsApp e objetivos -->
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label><i class="fab fa-whatsapp"></i> WhatsApp:</label>
+                            <input type="tel" name="whatsapp_recebe" class="input" placeholder="(85) 99999-9999" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-bullseye"></i> Agendamentos desejados:</label>
+                            <input type="number" name="agendamentos_desejados" class="input" placeholder="Ex: 10" required>
+                        </div>
+                    </div>
+
+                    <!-- Tom e CRM -->
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label><i class="fas fa-volume-up"></i> Tom de voz:</label>
+                            <select name="tom_voz" class="select" required>
+                                <option value="">Selecione...</option>
+                                <option value="formal">Formal/Profissional</option>
+                                <option value="descontraido">Descontraído/Amigável</option>
+                                <option value="consultivo">Consultivo/Especialista</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-crown"></i> CRM usado:</label>
+                            <input type="text" name="crm" class="input" placeholder="Ex: Pipedrive, Excel">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-sticky-note"></i> Observações extras:</label>
+                        <textarea name="observacoes" class="textarea" placeholder="Qualquer detalhe importante..."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <i class="fas fa-paper-plane"></i>
+                    Enviar Informações
+                </button>
+            </form>
+
+            <!-- Loading e mensagens (fora do form) -->
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p><strong>Enviando suas informações...</strong><br><small>Em breve entramos em contato!</small></p>
+            </div>
+
+            <div class="success" id="successMsg"></div>
+            <div class="error" id="errorMsg"></div>
         </div>
     </div>
 
-    <!-- Horários e limites -->
-    <div class="grid-3">
-        <div class="form-group">
-            <label><i class="fas fa-clock"></i> Horários disponíveis:</label>
-            <input type="text" name="horarios" class="input" placeholder="Ex: Seg-Sex 8h-17h" required>
-        </div>
-        <div class="form-group">
-            <label><i class="fas fa-stopwatch"></i> Duração consulta:</label>
-            <select name="duracao" class="select" required>
-                <option value="">Selecione...</option>
-                <option value="30min">30 minutos</option>
-                <option value="45min">45 minutos</option>
-                <option value="60min">60 minutos</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label><i class="fas fa-calendar-day"></i> Máximo por dia:</label>
-            <input type="number" name="maximo_dia" class="input" placeholder="Ex: 8" required>
-        </div>
-    </div>
-
-    <!-- WhatsApp e objetivos -->
-    <div class="grid-2">
-        <div class="form-group">
-            <label><i class="fab fa-whatsapp"></i> WhatsApp:</label>
-            <input type="tel" name="whatsapp_recebe" class="input" placeholder="(85) 99999-9999" required>
-        </div>
-        <div class="form-group">
-            <label><i class="fas fa-bullseye"></i> Agendamentos desejados:</label>
-            <input type="number" name="agendamentos_desejados" class="input" placeholder="Ex: 10" required>
-        </div>
-    </div>
-
-    <!-- Tom e observações -->
-    <div class="grid-2">
-        <div class="form-group">
-            <label><i class="fas fa-volume-up"></i> Tom de voz:</label>
-            <select name="tom_voz" class="select" required>
-                <option value="">Selecione...</option>
-                <option value="formal">Formal/Profissional</option>
-                <option value="descontraido">Descontraído/Amigável</option>
-                <option value="consultivo">Consultivo/Especialista</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label><i class="fas fa-crown"></i> CRM usado:</label>
-            <input type="text" name="crm" class="input" placeholder="Ex: Pipedrive, Excel">
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label><i class="fas fa-sticky-note"></i> Observações extras:</label>
-        <textarea name="observacoes" class="textarea" placeholder="Qualquer detalhe importante..."></textarea>
-    </div>
-</div>
-
-<!-- 🔥 BOTÃO QUE FALTAVA -->
-<button type="submit" class="submit-btn" id="submitBtn">
-    <i class="fas fa-paper-plane"></i>
-    Enviar Informações
-</button>
-</form>
-
-<!-- Loading e mensagens (fora do form) -->
-<div class="loading" id="loading">
-    <div class="spinner"></div>
-    <p><strong>Enviando suas informações...</strong><br><small>Em breve entramos em contato!</small></p>
-</div>
-
-<div class="success" id="successMsg"></div>
-<div class="error" id="errorMsg"></div>
-    
-
-
-    <!-- ✅ SCRIPT 100% CORRIGIDO -->
     <script>
         const SUPABASE_CONFIG = {
             url: 'https://bxzbabkngdveobfewuxp.supabase.co',
@@ -444,7 +441,8 @@
         };
 
         document.addEventListener('DOMContentLoaded', function() {
-            // ✅ NichoSelect com ID correto
+
+            // ✅ Mostra/oculta campo "nicho_outro" conforme seleção
             const nichoSelect = document.getElementById('nichoSelect');
             if (nichoSelect) {
                 nichoSelect.addEventListener('change', function() {
@@ -455,7 +453,7 @@
                 });
             }
 
-            // ✅ Form submit
+            // ✅ Submit do formulário
             const sdrForm = document.getElementById('sdrForm');
             if (sdrForm) {
                 sdrForm.addEventListener('submit', async function(e) {
@@ -475,6 +473,14 @@
                     try {
                         const formData = new FormData(this);
                         const dados = Object.fromEntries(formData);
+
+                        // ✅ FIX PRINCIPAL: remove nicho_outro se não for "outros"
+                        // Evita o erro HTTP 400 PGRST204 do Supabase
+                        if (dados.nichoSelect !== 'outros') {
+                            delete dados.nicho_outro;
+                        }
+
+                        // Mapeia o valor do select para texto legível
                         const nichoMap = {
                             "imobiliario": "🏠 Imobiliário",
                             "odontologia": "🦷 Odontologia", 
@@ -509,10 +515,11 @@
                             success.innerHTML = `
                                 <i class="fas fa-check-circle" style="font-size: 2rem; margin-bottom: 10px; display: block;"></i>
                                 <strong>✅ Informações recebidas com sucesso!</strong><br>
-                                <small><small>Analisaremos e entraremos em contato pelo WhatsApp em até 24h para construirmos seu Agente SDR</small>
-`;
+                                <small>Analisaremos e entraremos em contato pelo WhatsApp em até 24h para construirmos seu Agente SDR.</small>
+                            `;
                             success.style.display = 'block';
                             this.reset();
+                            document.getElementById('nichoOutro').style.display = 'none';
                         } else {
                             const errorData = await response.text();
                             throw new Error(`HTTP ${response.status}: ${errorData}`);
@@ -526,7 +533,7 @@
                         errorMsg.style.display = 'block';
                     } finally {
                         btn.disabled = false;
-                        btn.innerHTML = '<i class="fas fa-rocket"></i> Enviar Formulário';
+                        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Informações';
                         loading.style.display = 'none';
                     }
                 });
